@@ -20,7 +20,7 @@ function get_class_name($ID)
     $statement = $db->prepare($query);
     $statement->bindValue(':ID', $ID);
     $statement->execute();
-    $category = $statement->fetch();
+    $type = $statement->fetch();
     $statement->closeCursor();
     $class = $class['Class'];
     return $class;

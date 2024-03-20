@@ -20,9 +20,9 @@ function get_type_name($ID)
     $statement = $db->prepare($query);
     $statement->bindValue(':ID', $ID);
     $statement->execute();
-    $category = $statement->fetch();
+    $type = $statement->fetch();
     $statement->closeCursor();
-    $type = $category['Type'];
+    $type = $type['Type'];
     return $type;
 }
 

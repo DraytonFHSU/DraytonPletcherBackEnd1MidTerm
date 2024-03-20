@@ -1,23 +1,23 @@
 <?php 
 // Include the header part of the HTML page
-include("view/header.php"); 
+include("../view/header.php"); 
 ?>
 
-<!-- Display categories -->
-<?php if (!empty($types)) : ?> <!-- Check if there are any categories to display -->
+<!-- Display types -->
+<?php if (!empty($types)) : ?> <!-- Check if there are any types to display -->
     <section id="list" class="list">
         <header>
             <h1>type List</h1>
         </header>
-        <!-- Loop through the categories and display each one -->
+        <!-- Loop through the types and display each one -->
         <?php foreach ($types as $type) : ?>
             <div class="list__row">
                 <div class="list__item">
-                    <!-- Display the category name -->
+                    <!-- Display the type name -->
                     <p class="bold"><?= htmlspecialchars($type['Type']) ?></p>
                 </div>
                 <div class="list__removed">
-                    <!-- Form to delete the category -->
+                    <!-- Form to delete the type -->
                     <form action="." method="post">
                         <input type="hidden" name="action" value="delete_type">
                         <input type="hidden" name="typeID" value="<?= $type['ID'] ?>">
@@ -28,31 +28,31 @@ include("view/header.php");
         <?php endforeach; ?>
     </section>
 <?php else : ?>
-    <!-- Display a message if no categories exist -->
+    <!-- Display a message if no types exist -->
     <p>No types exist yet</p>
 <?php endif; ?>
 
-<!-- Add category Form -->
+<!-- Add type Form -->
 <section>
     <h2>Add type</h2>
     <form action="." method="post" id="add__form" class="add__form">
         <input type="hidden" name="action" value="add_type">
         <div class="add__inputs">
             <label>type:</label>
-            <!-- Input for the new category name -->
+            <!-- Input for the new type name -->
             <input type="text" name="type" maxlength="30" placeholder="Name" autofocus required>
         </div>
         <div class="add__addItem">
-            <!-- Button to submit the form and add a new category -->
+            <!-- Button to submit the form and add a new type -->
             <button class="add-button bold">Add</button>
         </div>
     </form>
 </section>
 
 <!-- Link to View/Edit to do's -->
-<p><a href=".?action=list_toDos">View/Edit vehicles</a></p>
+<p><a href=".?action=list_vehicles">View/Edit vehicles</a></p>
 
 <?php 
 // Include the footer part of the HTML page
-include("view/footer.php"); 
+include("../view/footer.php"); 
 ?>

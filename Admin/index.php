@@ -4,11 +4,11 @@
 //Back-end web development 1
 //Mid-Term
 
-require_once('./model/database.php');
-require_once('./model/class_db.php');
-require_once('./model/inventory_db.php');
-require_once('./model/make_db.php');
-require_once('./model/type_db.php');
+require_once('../model/database.php');
+require_once('../model/class_db.php');
+require_once('../model/inventory_db.php');
+require_once('../model/make_db.php');
+require_once('../model/type_db.php');
 
 // Filter input to prevent XSS and SQL Injection
 $vehicleID = filter_input(INPUT_POST, 'vehicleID', FILTER_SANITIZE_SPECIAL_CHARS) ?: filter_input(INPUT_GET, 'vehicleID', FILTER_VALIDATE_INT);
@@ -30,20 +30,20 @@ $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING) ?: filter_i
 
 switch ($action) {
     case "add_vehicles":
-        include('./view/vehicleList.php');
+        include('../view/vehicleList.php');
         break;
 
     case "list_classes":
         $classes = get_classes();
-        include('./view/classList.php');
+        include('../view/classList.php');
         break; // Prevent fall-through
     case "list_makes":
         $makes = get_makes();
-        include('./view/makeList.php');
+        include('../view/makeList.php');
         break; 
     case "list_types":
         $types = get_types();
-        include('./view/typeList.php');
+        include('../view/typeList.php');
         break; 
 
     case "add_class":
@@ -53,7 +53,7 @@ switch ($action) {
             exit(); // Exits the script, making a break optional but good practice
         } else {
             $error_message = "Invalid class name. Please check the field and try again.";
-            include("./view/error.php");
+            include("../view/error.php");
             exit();
         }
         break; // Good practice even after exit()
@@ -65,7 +65,7 @@ switch ($action) {
             exit(); 
         } else {
             $error_message = "Invalid make name. Please check the field and try again.";
-            include("./view/error.php");
+            include("../view/error.php");
             exit(); 
         }
         break; 
@@ -77,7 +77,7 @@ switch ($action) {
                 exit();
             } else {
                 $error_message = "Invalid type name. Please check the field and try again.";
-                include("./view/error.php");
+                include("../view/error.php");
                 exit();
             }
             break; 
@@ -90,7 +90,7 @@ switch ($action) {
             exit(); 
         } else {
             $error_message = "Invalid vehicle data. Check all fields and try again.";
-            include("./view/error.php");
+            include("../view/error.php");
             exit(); 
         }
         break; 
@@ -103,7 +103,7 @@ switch ($action) {
                 exit(); 
             } catch (PDOException $e) {
                 $error_message = "You cannot delete a class if vehicles exist in the category.";
-                include('./view/error.php');
+                include('../view/error.php');
                 exit(); 
             }
         }
@@ -116,7 +116,7 @@ switch ($action) {
                 exit(); 
             } catch (PDOException $e) {
                 $error_message = "You cannot delete a make if vehicles exist in the category.";
-                include('./view/error.php');
+                include('../view/error.php');
                 exit(); 
             }
         }
@@ -129,7 +129,7 @@ switch ($action) {
                 exit(); 
         } catch (PDOException $e) {
             $error_message = "You cannot delete a type if vehicles exist in the category.";
-            include('./view/error.php');
+            include('../view/error.php');
             exit(); 
         }
     }
@@ -141,7 +141,7 @@ switch ($action) {
             exit(); 
         } else {
             $error_message = "Missing or incorrect vehicle id.";
-            include('./view/error.php');
+            include('../view/error.php');
             exit(); 
         }
         break; 
@@ -150,6 +150,6 @@ switch ($action) {
         $makes = get_makes();
         $types = get_types();
         $vehicles = get_autos($classID, $makeID, $typeID, $sortBy);
-        include('./view/inventoryList.php');
+        include('../view/adminList.php');
         // No break needed after default as it's the last case
 }

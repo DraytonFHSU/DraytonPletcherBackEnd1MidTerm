@@ -5,9 +5,9 @@ function get_makes()
     $query = 'SELECT * FROM makes ORDER BY ID';
     $statement = $db->prepare($query);
     $statement->execute();
-    $categories = $statement->fetchAll();
+    $makes = $statement->fetchAll();
     $statement->closeCursor();
-    return $categories;
+    return $makes;
 }
 
 function get_make_name($ID)
@@ -20,7 +20,7 @@ function get_make_name($ID)
     $statement = $db->prepare($query);
     $statement->bindValue(':ID', $ID);
     $statement->execute();
-    $category = $statement->fetch();
+    $type = $statement->fetch();
     $statement->closeCursor();
     $make = $make['make'];
     return $make;
