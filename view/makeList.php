@@ -1,6 +1,6 @@
 <?php 
 // Include the header part of the HTML page
-include("view/header.php"); 
+include("../view/header.php"); 
 ?>
 
 <!-- Display makes -->
@@ -10,22 +10,24 @@ include("view/header.php");
             <h1>make List</h1>
         </header>
         <!-- Loop through the makes and display each one -->
+        <table>
         <?php foreach ($makes as $make) : ?>
-            <div class="list__row">
-                <div class="list__item">
+            <tr>
+                <td>
                     <!-- Display the make name -->
                     <p class="bold"><?= htmlspecialchars($make['Make']) ?></p>
-                </div>
-                <div class="list__removed">
+        </td>
+                <td>
                     <!-- Form to delete the make -->
                     <form action="." method="post">
                         <input type="hidden" name="action" value="delete_make">
                         <input type="hidden" name="makeID" value="<?= $make['ID'] ?>">
                         <button class="remove-button">X</button>
                     </form>
-                </div>
-            </div>
+        </td>
+        </tr>
         <?php endforeach; ?>
+        <table>
     </section>
 <?php else : ?>
     <!-- Display a message if no makes exist -->

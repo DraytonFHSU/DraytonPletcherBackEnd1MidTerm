@@ -1,3 +1,57 @@
 table{
-    border: solid black 1px;
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+th{
+    border: 1px dotted;
+    padding: 10px;
+}
+
+input{
+    width: 25px;
+    height: 25px;
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+    width: 100%;
+}
+
+select{
+    width: 70%;
+    height: 50px;
+}
+
+button{
+    height:50px;
+}
+
+button.filter{
+    width: 20%;
+}
+
+@media only screen and (min-width: 600px) {
+ /* For tablets: */
+  [class*="col-"] {
+    width: 100%;
+  }
+  select{
+    width: 40%;
+    height: 50px;
+}
+button{
+    height:50px;
+}
+}
+
+/* For desktop */
+@media only screen and (min-width: 768px) {
+    select{
+        width: 20%;
+        height: 30px;
+    }
+    button{
+        height:30px;
+    }
 }

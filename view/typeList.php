@@ -10,22 +10,24 @@ include("../view/header.php");
             <h1>type List</h1>
         </header>
         <!-- Loop through the types and display each one -->
+        <table>
         <?php foreach ($types as $type) : ?>
-            <div class="list__row">
-                <div class="list__item">
+            <tr>
+                <td>
                     <!-- Display the type name -->
                     <p class="bold"><?= htmlspecialchars($type['Type']) ?></p>
-                </div>
-                <div class="list__removed">
+        </td>
+                <td>
                     <!-- Form to delete the type -->
                     <form action="." method="post">
                         <input type="hidden" name="action" value="delete_type">
                         <input type="hidden" name="typeID" value="<?= $type['ID'] ?>">
                         <button class="remove-button">X</button>
                     </form>
-                </div>
-            </div>
+        </td>
+        </tr>
         <?php endforeach; ?>
+        </table>
     </section>
 <?php else : ?>
     <!-- Display a message if no types exist -->

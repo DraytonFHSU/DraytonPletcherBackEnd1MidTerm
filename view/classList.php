@@ -10,22 +10,23 @@ include("../view/header.php");
             <h1>class List</h1>
         </header>
         <!-- Loop through the classes and display each one -->
+        <table>
         <?php foreach ($classes as $class) : ?>
-            <div class="list__row">
-                <div class="list__item">
+            <tr>
+                <td>
                     <!-- Display the class name -->
                     <p class="bold"><?= htmlspecialchars($class['Class']) ?></p>
-                </div>
-                <div class="list__removed">
+        </td><td><div class="list__removed">
                     <!-- Form to delete the class -->
                     <form action="." method="post">
                         <input type="hidden" name="action" value="delete_class">
                         <input type="hidden" name="classID" value="<?= $class['ID'] ?>">
                         <button class="remove-button">X</button>
                     </form>
-                </div>
-            </div>
+                </td>
+            </tr>
         <?php endforeach; ?>
+        </table>
     </section>
 <?php else : ?>
     <!-- Display a message if no classes exist -->

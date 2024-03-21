@@ -12,7 +12,7 @@ include('./view/header.php'); // Include the header part of the HTML page
         <label for="price">Price</label><br>
         <input type="radio" value="V.year" id="year" name="sortBy" >
         <label for="year">Year</label><br>
-        <button type="submit">Go</button> <!-- Submit button for the filter form -->
+        <button class="filter" type="submit">Go</button> <!-- Submit button for the filter form -->
     </form>
     <!-- Form for Filtering Vehicles by category -->
     <form action="." method="get">
@@ -25,7 +25,7 @@ include('./view/header.php'); // Include the header part of the HTML page
                 </option>
             <?php endforeach; ?>
         </select>
-        <button type="submit">Go</button> <!-- Submit button for the filter form -->
+        <button class="filter" type="submit">Go</button> <!-- Submit button for the filter form -->
     </form>
     <!-- Form for Filtering Vehicles by category -->
     <form action="." method="get">
@@ -38,7 +38,7 @@ include('./view/header.php'); // Include the header part of the HTML page
                 </option>
             <?php endforeach; ?>
         </select>
-        <button type="submit">Go</button> <!-- Submit button for the filter form -->
+        <button class="filter" type="submit">Go</button> <!-- Submit button for the filter form -->
     </form>
     <!-- Form for Filtering Vehicles by category -->
     <form action="." method="get">
@@ -51,11 +51,12 @@ include('./view/header.php'); // Include the header part of the HTML page
                 </option>
             <?php endforeach; ?>
         </select>
-        <button type="submit">Go</button> <!-- Submit button for the filter form -->
+        <button class="filter" type="submit">Go</button> <!-- Submit button for the filter form -->
     </form>
     <!-- Check if there are vehicles to display (fetched from index.php) -->
     <?php if ($vehicles) : ?>
         <!-- Loop through each vehicle and display it -->
+        <div style="overflow-x:auto;">
         <table>
             <tr>
             <th>Year</th><th>Make</th><th>Model</th>
@@ -72,6 +73,7 @@ include('./view/header.php'); // Include the header part of the HTML page
         </tr>
         <?php endforeach; ?>
         </table>
+        </div>
     <?php else : ?>
         <!-- Message displayed if no vehicle's exist -->
         <p>No vehicles exist yet.</p>
